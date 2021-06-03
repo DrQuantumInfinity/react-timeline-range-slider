@@ -118,10 +118,9 @@ class TimeRange extends React.Component {
   }
 
   onDragEvent(dragItem, dragPosition) {
-      this.props.children.selectedInterval(this.toInterval(dragPosition, sliderRail.current.getBoundingClientRect()))
+      this.props.children.selectedInterval(this.toInterval(dragPosition, this.sliderRail.current.getBoundingClientRect()))
   }
 
-  const sliderRail = React.createRef()
 
   render() {
     const {
@@ -135,6 +134,9 @@ class TimeRange extends React.Component {
       formatTick,
       mode,
     } = this.props
+
+
+    this.sliderRail = React.createRef()
 
     const domain = timelineInterval.map(t => Number(t))
 
@@ -153,7 +155,7 @@ class TimeRange extends React.Component {
         >
           <Rail>
             {({ getRailProps }) =>
-              <SliderRail ref={sliderRail} className={sliderRailClassName} getRailProps={getRailProps} />}
+              <SliderRail ref={this.sliderRail} className={sliderRailClassName} getRailProps={getRailProps} />}
           </Rail>
 
           <Handles>
