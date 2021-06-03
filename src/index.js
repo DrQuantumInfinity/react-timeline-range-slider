@@ -107,6 +107,22 @@ class TimeRange extends React.Component {
     return scaleTime().domain(timelineInterval).ticks(ticksNumber).map(t => +t)
   }
 
+  toInterval(offset, rect) {
+
+    const oneHourX = rect.rect.right
+    const zeroX = rect.rect.left
+
+    let hour = (offset - zeroX) / (oneHourX - zeroX)
+    const time = addMilliseconds(getTodayAtSpecificHour(0), hour * 3600.0 * 1000.0 * (2))
+    return [time, addMinutes(time, 15)]
+  }
+
+  onDragEvent(dragItem, dragPosition) {
+      this.props.children.selectedInterval(this.toInterval(dragPosition, sliderRail.current.getBoundingClientRect()))
+  }
+
+  const sliderRail = React.createRef()
+
   render() {
     const {
       sliderRailClassName,
@@ -137,7 +153,7 @@ class TimeRange extends React.Component {
         >
           <Rail>
             {({ getRailProps }) =>
-              <SliderRail className={sliderRailClassName} getRailProps={getRailProps} />}
+              <SliderRail ref={sliderRail} className={sliderRailClassName} getRailProps={getRailProps} />}
           </Rail>
 
           <Handles>
