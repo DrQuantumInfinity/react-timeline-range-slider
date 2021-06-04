@@ -3,7 +3,7 @@
   "version": "1.4.1",
   "description": "Time Slider component for React",
   "author": "Elizaveta Shkodkina <lizashkodkina@gmail.com>",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "homepage": "https://github.com/lizashkod/react-time-range-slider",
   "repository": {
@@ -25,11 +25,8 @@
     "react-dom": "^17.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "flow": "flow"
+    "start": "webpack --watch",
+    "build": "webpack"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,15 +48,14 @@
     "date-fns": "^2.19.0",
     "node-sass": "^5.0.0",
     "prop-types": "^15.7.2",
-    "react-compound-slider": "^3.3.1",
-    "react-scripts": "4.0.3"
+    "react-compound-slider": "^3.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.12.13",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.2.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "css-loader": "^5.1.3",
