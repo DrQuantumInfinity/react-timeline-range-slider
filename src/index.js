@@ -113,18 +113,18 @@ class TimeRange extends React.Component {
     return scaleTime().domain(timelineInterval).ticks(ticksNumber).map(t => +t)
   }
 
-  toInterval(offset, rect) {
+  toInterval(offset, rect, timeLength) {
 
     const oneHourX = rect.right
     const zeroX = rect.left
 
     let hour = (offset - zeroX) / (oneHourX - zeroX)
-    const time = addMilliseconds(getTodayAtSpecificHour(0), hour * 3600.0 * 1000.0 * (2))
+    const time = addMilliseconds(getTodayAtSpecificHour(0), hour * 3600.0 * 1000.0 * (timeLength))
     return [time, addMinutes(time, 15)]
   }
 
-  onDropEvent(dragItem, dragPosition) {
-      return this.toInterval(dragPosition, this.sliderRail.current.getBoundingClientRect())
+  onDropEvent(dragItem, dragPosition, timeLength) {
+      return this.toInterval(dragPosition, this.sliderRail.current.getBoundingClientRect(), timeLength)
   }
 
 
