@@ -124,7 +124,7 @@ class TimeRange extends React.Component {
   }
 
   onDropEvent(dragItem, dragPosition) {
-      this.props.children.selectedInterval = this.toInterval(dragPosition, this.sliderRail.current.getBoundingClientRect())
+      this.props.selectedInterval = this.toInterval(dragPosition, this.sliderRail.current.getBoundingClientRect())
   }
 
 
