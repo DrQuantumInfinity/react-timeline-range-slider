@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { scaleTime } from 'd3-scale'
 import { Slider, Rail, Handles, Tracks, Ticks } from 'react-compound-slider'
+
 import {
   format,
   addHours,
   startOfToday,
   endOfToday,
+  addMilliseconds,
   differenceInMilliseconds,
   isBefore,
   isAfter,
@@ -20,6 +22,10 @@ import Tick from './components/Tick'
 import Handle from './components/Handle'
 
 import './styles/index.scss'
+
+const now = new Date()
+const getTodayAtSpecificHour = (hour, minute = 0) =>
+    set(now, {hours: hour, minutes: minute, seconds: 0, milliseconds: 0})
 
 const getTimelineConfig = (timelineStart, timelineLength) => (date) => {
   const percent = differenceInMilliseconds(date, timelineStart)/timelineLength * 100
