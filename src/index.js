@@ -115,11 +115,11 @@ class TimeRange extends React.Component {
 
   toInterval(offset, rect, timeLength) {
 
-    const oneHourX = rect.right
+    const endX = rect.right
     const zeroX = rect.left
 
-    let hour = (offset - zeroX) / (oneHourX - zeroX)
-    const time = addMilliseconds(getTodayAtSpecificHour(0), hour * 3600.0 * 1000.0 * (timeLength))
+    let millis = timeLength * (offset - zeroX) / (endX - zeroX)
+    const time = addMilliseconds(getTodayAtSpecificHour(0), millis )
     return [time, addMinutes(time, 15)]
   }
 
